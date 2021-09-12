@@ -1,0 +1,34 @@
+# Synkd Development Environment
+version: '3.8'
+services: 
+  synkd:
+    build:
+      context: .
+    image: diaan/synkd:dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./:/home/synkd_user/synkd
+      - synkd.deps:/home/synkd_user/synkd/deps/
+      - synkd.build:/home/synkd_user/synkd/_build/
+
+  synkd.iex:
+    build:
+      context: .
+    image: diaan/synkd:dev
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres.dev
+    volumes:
+      - ./:/home/synkd_user/synkd
+      - synkd.iex.deps:/home/synkd_user/synkd/deps/
+      - synkd.iex.build:/home/synkd_user/synkd/_build/
+    profiles:
+      - iex
+
+volumes:
+  synkd.deps:
+  synkd.build:
+  synkd.iex.deps:
+  synkd.iex.build:

@@ -1,0 +1,10 @@
+.spotify {
+  text-decoration: none;
+  background-color: #1DB954;
+  color: #191414;
+  padding: 0.4rem;
+  border-radius: 0.1rem;
+  margin: 0 auto auto;
+  display: inline-block;
+  text-align: left;
+}
